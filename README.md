@@ -1,6 +1,6 @@
 # Weather Forecast Vis
 
-Visualize the inaccuracy of predicted weather.
+Showcasing the inaccuracy of predicted weather.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
