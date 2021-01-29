@@ -1,13 +1,15 @@
+import { Segment } from 'semantic-ui-react';
 import styles from './App.module.css';
+import Charts from './Charts';
+import ControlPanel from './ControlPanel';
+import Heading from './Heading';
 
 function App() {
   return (
     <div className={styles.App}>
-      <header className={styles.header}>
-        <p>
-          Weather Forecast Vis
-        </p>
-      </header>
+      <Heading />
+      <ControlPanel />
+      <Charts />
     </div>
   );
 }
