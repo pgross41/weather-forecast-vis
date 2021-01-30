@@ -1,1 +1,3 @@
 - figure out a catchy name and make an icon
+- chart library? https://github.com/recharts/recharts
+- merge classnames

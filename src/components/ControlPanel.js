@@ -7,7 +7,7 @@ const ControlPanel = () => {
   const [fixed, setFixed] = useState(false);
   return (
     <Visibility once={false} onTopPassed={() => setFixed(true)} onTopPassedReverse={() => setFixed(false)}>
-      <Segment className={fixed && styles.fixed}>
+      <Segment className={`${styles.ControlPanel} ${fixed && styles.fixed}`}> 
         <Container>
           <Menu compact secondary>
             <Menu.Item>

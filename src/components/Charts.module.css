@@ -1,9 +1,3 @@
-.ControlPanel {
-}
-
-.fixed {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
+.Charts {
+  margin-top: 155px;
 }

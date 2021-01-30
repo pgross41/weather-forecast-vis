@@ -1,12 +1,14 @@
 import React from 'react';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import Chart from './Chart';
+import styles from './Charts.module.css';
 
 const Charts = () => {
-
-  // TODO: Remove inline style
   return (
-    <Container text style={{ height: '3000px' }}> 
-      <Segment style={{ margin: '5em 0em 0em', padding: '5em 0em' }} >jfkdlsj</Segment>
+    <Container fluid className={styles.Charts}>
+      <Chart title="Temperature" />
+      <Chart title="Precipitation" />
+      <Chart title="Wind" />
     </Container>
   );
 };
