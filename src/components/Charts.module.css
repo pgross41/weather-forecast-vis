@@ -1,3 +1,5 @@
-.Charts {
-  margin-top: 155px;
+.charts {
+  padding-top: 140px;
+  position: relative;
+  background-color: #eee;
 }

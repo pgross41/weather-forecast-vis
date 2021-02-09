@@ -5,7 +5,7 @@ import styles from './Charts.module.css';
 
 const Charts = () => {
   return (
-    <Container fluid className={styles.Charts}>
+    <Container fluid className={styles.charts}>
       <Chart title="Temperature" />
       <Chart title="Precipitation" />
       <Chart title="Wind" />

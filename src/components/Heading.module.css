@@ -1,3 +1,35 @@
-.Heading {
-  
+.heading {
+  margin-bottom: 0 !important;
+  padding-bottom: 30px !important;
+}
+
+.innerHeading {
+  display: inline-block !important;
+}
+
+.cloud {
+  position: fixed !important;
+  height: 70px;
+  left: -120px;
+  animation-iteration-count: infinite;
+  animation-name: scrollCloud;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+}
+
+@keyframes scrollCloud {
+  0% {
+    left: -100px;
+    filter: brightness(1);
+  }
+  25% {
+    filter: brightness(1);
+  }
+  75% {
+    filter: brightness(0.7);
+  }
+  100% {
+    left: 100%;
+    filter: brightness(0.6);
+  }
 }
