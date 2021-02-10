@@ -26,7 +26,10 @@ const Heading = () => {
       <Segment circular className={styles.innerHeading}>
         <Header as="h1">
           <Image src={icon} height="70px" />
-          <Header.Content>Weather Wrongness</Header.Content>
+          <Header.Content>
+            Weather Wrongness
+            <Header.Subheader>The forecast is a lie</Header.Subheader>
+          </Header.Content>
         </Header>
       </Segment>
     </Segment>
