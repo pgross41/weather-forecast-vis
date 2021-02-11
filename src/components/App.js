@@ -1,8 +1,8 @@
-import { Segment } from 'semantic-ui-react';
 import styles from './App.module.css';
 import Charts from './Charts';
 import ControlPanel from './ControlPanel';
 import Heading from './Heading';
+import Footing from './Footing';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Heading />
       <ControlPanel />
       <Charts />
+      <Footing />
     </div>
   );
 }

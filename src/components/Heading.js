@@ -19,8 +19,8 @@ const Heading = () => {
     <Segment padded color="blue" inverted className={styles.heading}>
       <div>
         <Cloud delay={0} />
-        <Cloud delay={8} />
-        <Cloud delay={16} />
+        <Cloud delay={12} />
+        <Cloud delay={20} />
         <Cloud delay={24} />
       </div>
       <Segment circular className={styles.innerHeading}>
@@ -32,6 +32,10 @@ const Heading = () => {
           </Header.Content>
         </Header>
       </Segment>
+      <div>
+        <Cloud delay={6} />
+        <Cloud delay={16} />
+      </div>
     </Segment>
   );
 };

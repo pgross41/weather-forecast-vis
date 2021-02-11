@@ -4,7 +4,7 @@ import styles from './Chart.module.css';
 
 const Chart = ({ title }) => {
   return (
-    <Segment className={styles.Chart}>
+    <Segment className={styles.Chart} id={title}>
       <Header as="h3" content={title} />
       <Divider />
       <div style={{ height: '400px' }} />

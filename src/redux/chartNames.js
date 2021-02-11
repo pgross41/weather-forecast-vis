@@ -1,3 +1,3 @@
-export const TEMPERATURE = "TEMPERATURE";
-export const PRECIPITATION = "PRECIPITATION";
-export const WIND = "WIND";
+export const TEMPERATURE = "Temperature";
+export const PRECIPITATION = "Precipitation";
+export const WIND = "Wind";

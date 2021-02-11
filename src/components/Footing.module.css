@@ -1,0 +1,8 @@
+.footing {
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 600px;
+  margin: 0 !important;
+}

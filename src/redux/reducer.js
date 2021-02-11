@@ -9,7 +9,9 @@ export default (state = initialState, action) => {
     case types.PREV_DATE:
       return { ...state, date: date.setDate(date.getDate() - 1) };
     case types.SET_CHART_NAME:
-      return [...state, { ...action.chartName }];
+      return { ...state, chartName: action.chartName, scrollToChart: null };
+    case types.SET_SCROLL_TO_CHART:
+      return { ...state, scrollToChart: action.chartName };
     default:
       return state;
   }
