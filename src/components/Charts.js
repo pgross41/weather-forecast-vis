@@ -7,15 +7,14 @@ import Chart from './Chart';
 import styles from './Charts.module.css';
 
 const offset = 140;
+const refs = {};
 
 const Charts = () => {
   const dispatch = useDispatch();
   const ref = createRef();
-  const refs = {
-    [chartNames.TEMPERATURE]: createRef(),
-    [chartNames.PRECIPITATION]: createRef(),
-    [chartNames.WIND]: createRef(),
-  };
+  refs[chartNames.TEMPERATURE] = createRef();
+  refs[chartNames.PRECIPITATION] = createRef();
+  refs[chartNames.WIND] = createRef();
 
   const scrollToChart = useSelector((state) => state.scrollToChart);
 
@@ -24,7 +23,7 @@ const Charts = () => {
       window.scrollTo({ top: refs[scrollToChart].current.getBoundingClientRect().top + window.pageYOffset - offset });
       dispatch(setScrollToChart(null));
     }
-  }, [scrollToChart]);
+  }, [scrollToChart, dispatch]);
 
   const ChartRef = ({ chartName }) => (
     <div ref={refs[chartName]}>

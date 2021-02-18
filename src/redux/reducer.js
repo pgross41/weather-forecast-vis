@@ -12,6 +12,8 @@ export default (state = initialState, action) => {
       return { ...state, chartName: action.chartName, scrollToChart: null };
     case types.SET_SCROLL_TO_CHART:
       return { ...state, scrollToChart: action.chartName };
+    case types.LOAD_WEATHER_DATA_SUCCESS:
+      return { ...state, weatherData: action.weatherData };
     default:
       return state;
   }

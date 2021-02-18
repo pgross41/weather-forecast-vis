@@ -15,3 +15,11 @@ export function setChartName(chartName) {
 export function setScrollToChart(chartName) {
   return { type: types.SET_SCROLL_TO_CHART, chartName };
 }
+
+export function loadWeatherData() {
+  return { type: types.LOAD_WEATHER_DATA };
+}
+
+export function loadWeatherDataSuccess(weatherData) {
+  return { type: types.LOAD_WEATHER_DATA_SUCCESS, weatherData };
+}

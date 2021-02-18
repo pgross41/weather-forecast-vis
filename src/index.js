@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
 import App from './components/App';
 import './index.css';
-import { createStore } from 'redux';
-import reducer from './redux/reducer';
-import initialState from './redux/initialState';
 import { Provider as ReduxProvider } from 'react-redux';
+import configureStore from './redux/configureStore';
 
-const store = createStore(reducer, initialState);
+const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
