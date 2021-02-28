@@ -22,44 +22,46 @@ export default (store) => (next) => async (action) => {
  */
 const parseCsvData = (csvData) => {
   const data = csvToJson(csvData);
-  const actuals = {};
-  const forecasts = new Array(8).fill({});
+  const parsed = {};
+
+  // Lookup the predicted forecast for a given date and forecast day number
+  const getForecast = (dayNumber, dateKey) => {
+    const row = data.find((row) => row[`date${dayNumber}`].slice(0, 10) === dateKey);
+    if (!row) return null;
+    return {
+      time: new Date(row[`date${dayNumber}`]),
+      condition: row[`condition${dayNumber}`],
+      precipitation: row[`precipitation${dayNumber}`],
+      temperature: row[`temperature${dayNumber}`],
+      windBearing: row[`windBearing${dayNumber}`],
+      windSpeed: row[`windSpeed${dayNumber}`],
+    };
+  };
+
+  // Format the input data into the main "actuals" data with 8 empty forecast slots
   data.forEach((row) => {
-    actuals[row.date.slice(0, 10)] = {
+    // Remove the time portion and key off yyyy-mm-dd
+    const dateKey = row.date.slice(0, 10);
+    parsed[dateKey] = {
       time: new Date(row.date),
       condition: row.condition,
       precipitation: row.precipitation,
       temperature: row.temperature,
       windBearing: row.windBearing,
       windSpeed: row.windSpeed,
+      forecasts: [
+        getForecast(0, dateKey),
+        getForecast(1, dateKey),
+        getForecast(2, dateKey),
+        getForecast(3, dateKey),
+        getForecast(4, dateKey),
+        getForecast(5, dateKey),
+        getForecast(6, dateKey),
+        getForecast(7, dateKey),
+      ],
     };
-    forecasts.forEach((_, dayNumber) => {
-      forecasts[dayNumber][row.date.slice(0, 10)] = {
-        time: new Date(row[`date${dayNumber}`]),
-        condition: row[`condition${dayNumber}`],
-        precipitation: row[`precipitation${dayNumber}`],
-        temperature: row[`temperature${dayNumber}`],
-        windBearing: row[`windBearing${dayNumber}`],
-        windSpeed: row[`windSpeed${dayNumber}`],
-      };
-    });
   });
-  const parsedtmp = {
-    conditoin: 'rain',
-    temperature: '3',
-    forecast: [
-      {
-        condition: 'rain',
-        temperature: '3.1',
-      },
-      {
-        condition: 'sprinkle',
-        temperature: '3.2',
-      },
-    ],
-  };
-  console.log({ actuals, forecasts });
-  return actuals;
+  return parsed;
 };
 
 /**
