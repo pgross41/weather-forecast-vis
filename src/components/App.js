@@ -1,5 +1,5 @@
 import styles from './App.module.css';
-import Charts from './Charts';
+import ChartPanels from './ChartPanels';
 import ControlPanel from './ControlPanel';
 import Heading from './Heading';
 import Footing from './Footing';
@@ -14,7 +14,7 @@ const App = () => {
     <div className={styles.App}>
       <Heading />
       <ControlPanel />
-      <Charts />
+      <ChartPanels />
       <Footing />
     </div>
   );

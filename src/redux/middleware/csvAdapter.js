@@ -4,7 +4,7 @@ import csvUrl from '../../weatherdata.csv';
 
 /**
  * Read weather data from CSV and transform it into something useful
- * This could be swapped out for a server call if needed
+ * Would like to swap this file out with an API call in the future
  */
 export default (store) => (next) => async (action) => {
   if (action.type === LOAD_WEATHER_DATA) {
@@ -38,7 +38,7 @@ const parseCsvData = (csvData) => {
     };
   };
 
-  // Format the input data into the main "actuals" data with 8 empty forecast slots
+  // Format the input data into the main "actuals" data with 8 forecast slots
   data.forEach((row) => {
     // Remove the time portion and key off yyyy-mm-dd
     const dateKey = row.date.slice(0, 10);
