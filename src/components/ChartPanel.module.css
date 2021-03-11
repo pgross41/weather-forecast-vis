@@ -1,3 +1,11 @@
 .ChartPanel {
-  margin: 1em!important;
+  margin: 1em !important;
+}
+
+.columns {
+  display: flex;
+}
+
+.chart {
+  height: 400px;
 }

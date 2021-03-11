@@ -5,7 +5,7 @@ import { setChartName, setScrollToChart } from '../redux/actions';
 import * as chartNames from '../redux/chartNames';
 import ChartPanel from './ChartPanel';
 import styles from './ChartPanels.module.css';
-import TemperatureChart from './charts/TemperatureChart';
+import * as temperatureChart from '../charts/temperatureChart';
 
 const offset = 140;
 const refs = {};
@@ -26,19 +26,19 @@ const ChartPanels = () => {
     }
   }, [scrollToChart, dispatch]);
 
-  const ChartRef = ({ chartName, Chart }) => (
+  const ChartRef = ({ chartName, chart }) => (
     <div ref={refs[chartName]}>
       <Visibility once={false} onPassing={() => dispatch(setChartName(chartName))} offset={offset + 10}>
-        <ChartPanel title={chartName} Chart={Chart} />
+        <ChartPanel title={chartName} chart={chart} />
       </Visibility>
     </div>
   );
 
   return (
     <div ref={ref} className={styles.chartPanels}>
-      <ChartRef chartName={chartNames.TEMPERATURE} Chart={TemperatureChart} />
-      <ChartRef chartName={chartNames.PRECIPITATION} />
-      <ChartRef chartName={chartNames.WIND} />
+      <ChartRef chartName={chartNames.TEMPERATURE} chart={temperatureChart} />
+      <ChartRef chartName={chartNames.PRECIPITATION} chart={{ data: {}, options: {}, legendValues: [] }} />
+      <ChartRef chartName={chartNames.WIND} chart={{ data: {}, options: {}, legendValues: [] }} />
     </div>
   );
 };

@@ -1,5 +1,3 @@
-import { Bar } from 'react-chartjs-2';
-
 const data = {
   labels: [
     'Day of',
@@ -38,31 +36,27 @@ const data = {
   ],
 };
 
-const TemperatureChart = () => {
-  return (
-    <div>
-      <h2>Bar Example (custom size)</h2>
-      <Bar
-        data={data}
-        width={100}
-        height={50}
-        options={{
-          maintainAspectRatio: false,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-          },
-        }}
-      />
-    </div>
-  );
+const options = {
+  maintainAspectRatio: false,
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+        },
+      },
+    ],
+  },
 };
 
-TemperatureChart.propTypes = {};
+const legendValues = [
+  { color: '#009392', label: '100' },
+  { color: '#39b185', label: null },
+  { color: '#9ccb86', label: null },
+  { color: '#e9e29c', label: null },
+  { color: '#eeb479', label: null },
+  { color: '#e88471', label: null },
+  { color: '#cf597e', label: '0' },
+];
 
-export default TemperatureChart;
+export { data, options, legendValues };
