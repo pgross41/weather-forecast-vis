@@ -1,6 +1,7 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
 import styles from './Legend.module.css';
+import PropTypes from 'prop-types';
 
 const Legend = ({ values }) => {
   return (
@@ -13,6 +14,15 @@ const Legend = ({ values }) => {
       ))}
     </div>
   );
+};
+
+Legend.propTypes = {
+  values: PropTypes.arrayOf(
+    PropTypes.shape({
+      color: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
 };
 
 export default Legend;

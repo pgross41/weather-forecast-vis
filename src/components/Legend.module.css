@@ -15,7 +15,7 @@
 }
 
 .color { 
-  width: 40px;
+  width: 10px;
   height: calc(100% - 5px);
   user-select: none;
 } 

@@ -16,7 +16,7 @@ const Heading = () => {
     />
   );
   return (
-    <Segment padded color="blue" inverted className={styles.heading}>
+    <Segment padded inverted className={styles.heading}>
       <div>
         <Cloud delay={0} />
         <Cloud delay={12} />

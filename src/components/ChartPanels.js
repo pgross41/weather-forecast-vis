@@ -5,7 +5,7 @@ import { setChartName, setScrollToChart } from '../redux/actions';
 import * as chartNames from '../redux/chartNames';
 import ChartPanel from './ChartPanel';
 import styles from './ChartPanels.module.css';
-import * as temperatureChart from '../charts/temperatureChart';
+import * as temperatureChart from '../chartData/temperatureChart';
 
 const offset = 140;
 const refs = {};

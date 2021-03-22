@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider, Grid, Header, Segment } from 'semantic-ui-react';
 import styles from './ChartPanel.module.css';
 import Legend from './Legend';
-import { Bar } from 'react-chartjs-2';
+import Chart from './Chart';
 
 const ChartPanel = ({ title, chart }) => {
   console.log(chart);
@@ -25,9 +25,7 @@ const ChartPanel = ({ title, chart }) => {
         <Grid.Row>
           <Grid.Column width={2} textAlign="right"></Grid.Column>
           <Grid.Column width={12} textAlign="right">
-            <div className={styles.chart}>
-              <Bar data={chart.data} width={100} options={chart.options} />
-            </div>
+            <Chart chart={chart}/>
           </Grid.Column>
           <Grid.Column width={2} textAlign="right">
             <Legend values={chart.legendValues} />
