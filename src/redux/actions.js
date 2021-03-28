@@ -20,6 +20,6 @@ export function loadWeatherData() {
   return { type: types.LOAD_WEATHER_DATA };
 }
 
-export function loadWeatherDataSuccess(weatherData) {
-  return { type: types.LOAD_WEATHER_DATA_SUCCESS, weatherData };
+export function loadWeatherDataSuccess(allWeatherData) {
+  return { type: types.LOAD_WEATHER_DATA_SUCCESS, allWeatherData };
 }

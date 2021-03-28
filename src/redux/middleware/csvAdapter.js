@@ -18,7 +18,7 @@ export default (store) => (next) => async (action) => {
 };
 
 /**
- * Read the CSV and format it for the app
+ * Read the flat CSV and group it by day with forecast info in an array
  */
 const parseCsvData = (csvData) => {
   const data = csvToJson(csvData);
