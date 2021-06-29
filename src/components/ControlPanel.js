@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Grid, Icon, Menu, Segment, Visibility } from 'semantic-ui-react';
 import { nextDate, prevDate, setScrollToChart } from '../redux/actions';
-import * as chartNames from '../redux/chartNames';
+import * as weatherTypes from '../redux/weatherTypes';
 import styles from './ControlPanel.module.css';
 
 const ControlPanel = () => {
@@ -44,9 +44,9 @@ const ControlPanel = () => {
           <Grid.Row>
             <Container>
               <Menu compact pointing secondary size="large">
-                <ChartMenuItem chartName={chartNames.TEMPERATURE} />
-                <ChartMenuItem chartName={chartNames.PRECIPITATION} />
-                <ChartMenuItem chartName={chartNames.WIND} />
+                <ChartMenuItem chartName={weatherTypes.TEMPERATURE} />
+                <ChartMenuItem chartName={weatherTypes.PRECIPITATION} />
+                <ChartMenuItem chartName={weatherTypes.WIND} />
               </Menu>
             </Container>
           </Grid.Row>

@@ -1,13 +1,4 @@
-const colors = [
-  'rgba(255, 99, 132, 0.2)',
-  'rgba(54, 162, 235, 0.2)',
-  'rgba(255, 206, 86, 0.2)',
-  'rgba(75, 192, 192, 0.2)',
-  'rgba(153, 102, 255, 0.2)',
-  'rgba(255, 159, 64, 0.2)',
-]
-
-const data = [1, 4, 2, 0, -3, -1, 1, 4];
+const weatherType = 'temperature';
 
 const legendValues = [
   { color: '#cf597e', label: '100°F' },
@@ -19,4 +10,7 @@ const legendValues = [
   { color: '#009392', label: '10°F' },
 ];
 
-export { colors, data, legendValues };
+const min = -10;
+const max = 10;
+
+export { legendValues, min, max, weatherType };

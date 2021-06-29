@@ -2,10 +2,9 @@ import React, { createRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Visibility } from 'semantic-ui-react';
 import { setChartName, setScrollToChart } from '../redux/actions';
-import * as chartNames from '../redux/chartNames';
+import * as weatherTypes from '../redux/weatherTypes';
 import ChartPanel from './ChartPanel';
 import styles from './ChartPanels.module.css';
-import * as temperatureChart from '../chartData/temperatureChart';
 
 const offset = 140;
 const refs = {};
@@ -13,9 +12,9 @@ const refs = {};
 const ChartPanels = () => {
   const dispatch = useDispatch();
   const ref = createRef();
-  refs[chartNames.TEMPERATURE] = createRef();
-  refs[chartNames.PRECIPITATION] = createRef();
-  refs[chartNames.WIND] = createRef();
+  refs[weatherTypes.TEMPERATURE] = createRef();
+  refs[weatherTypes.PRECIPITATION] = createRef();
+  refs[weatherTypes.WIND] = createRef();
 
   const scrollToChart = useSelector((state) => state.scrollToChart);
 
@@ -26,19 +25,19 @@ const ChartPanels = () => {
     }
   }, [scrollToChart, dispatch]);
 
-  const ChartRef = ({ chartName, chart }) => (
+  const ChartRef = ({ chartName }) => (
     <div ref={refs[chartName]}>
       <Visibility once={false} onPassing={() => dispatch(setChartName(chartName))} offset={offset + 10}>
-        <ChartPanel title={chartName} chart={chart} />
+        <ChartPanel chartName={chartName} />
       </Visibility>
     </div>
   );
 
   return (
     <div ref={ref} className={styles.chartPanels}>
-      <ChartRef chartName={chartNames.TEMPERATURE} chart={temperatureChart} />
-      <ChartRef chartName={chartNames.PRECIPITATION} chart={{ data: {}, options: {}, legendValues: [] }} />
-      <ChartRef chartName={chartNames.WIND} chart={{ data: {}, options: {}, legendValues: [] }} />
+      <ChartRef chartName={weatherTypes.TEMPERATURE} />
+      <ChartRef chartName={weatherTypes.PRECIPITATION} />
+      <ChartRef chartName={weatherTypes.WIND} />
     </div>
   );
 };

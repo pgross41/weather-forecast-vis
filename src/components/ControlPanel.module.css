@@ -5,6 +5,10 @@
   z-index: 1;
 }
 
+.controlPanel a {
+  text-transform: capitalize !important;
+}
+
 .fixed {
   position: fixed !important;
   top: 0;

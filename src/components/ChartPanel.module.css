@@ -1,5 +1,9 @@
-.ChartPanel {
+.chartPanel {
   margin: 1em !important;
+}
+
+.chartPanel h3 { 
+  text-transform: capitalize !important;
 }
 
 .columns {
