@@ -13,3 +13,8 @@
   position: fixed !important;
   top: 0;
 }
+
+.row {
+  padding-bottom: 0 !important;
+  background-color: #f7f7f7;
+}

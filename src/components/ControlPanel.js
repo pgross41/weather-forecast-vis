@@ -23,25 +23,25 @@ const ControlPanel = () => {
       <Segment className={`${styles.controlPanel} ${fixed && styles.fixed}`}>
         <Grid>
           {/* Date selector */}
-          <Grid.Row>
+          <Grid.Row className={styles.row}>
             <Grid.Column width={6} textAlign="right">
               <Menu.Item onClick={() => dispatch(prevDate())}>
-                <Icon link size="large" name="angle left" />
+                <Icon link circular size="large" name="angle left" />
               </Menu.Item>
             </Grid.Column>
-            <Grid.Column width={4}>
+            <Grid.Column width={4} verticalAlign="middle">
               <Menu.Item header as="h2">
                 {new Date(date).toLocaleDateString()}
               </Menu.Item>
             </Grid.Column>
             <Grid.Column width={6} textAlign="left">
               <Menu.Item onClick={() => dispatch(nextDate())}>
-                <Icon link size="large" name="angle right" />
+                <Icon link circular size="large" name="angle right" />
               </Menu.Item>
             </Grid.Column>
           </Grid.Row>
           {/* Chart selector */}
-          <Grid.Row>
+          <Grid.Row className={styles.row}>
             <Container>
               <Menu compact pointing secondary size="large">
                 <ChartMenuItem chartName={weatherTypes.TEMPERATURE} />

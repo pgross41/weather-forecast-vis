@@ -1,7 +1,7 @@
 import * as weatherTypes from '../weatherTypes';
-import * as precipitationMeta from '../../chartMetadata/precipitationMeta';
-import * as temperatureMeta from '../../chartMetadata/temperatureMeta';
-import * as windMeta from '../../chartMetadata/windMeta';
+import precipitationMeta from '../../chartMetadata/precipitationMeta';
+import temperatureMeta from '../../chartMetadata/temperatureMeta';
+import windMeta from '../../chartMetadata/windMeta';
 
 /**
  * Grab the correct metadata for a given chart... This isn't actually a redux selector ¯\_(ツ)_/¯

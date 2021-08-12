@@ -1,22 +1,25 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './Chart.module.css';
-import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJs, Bar } from 'react-chartjs-2';
 import selectChartData from '../redux/selectors/selectChartData';
 import selectChartMetadata from '../redux/selectors/selectChartMetadata';
 
-const Chart = ({ chartName }) => {
+ChartJs.Tooltip.positioners.custom = (elements, eventPosition) => {
+  return {
+    x: elements[0]._view.x,
+    y: eventPosition.y,
+  };
+};
 
+const Chart = ({ chartName }) => {
   const chartMetadata = useSelector(selectChartMetadata(chartName));
   const chartData = useSelector(selectChartData(chartName));
 
+  const tooltipDatasetNames = ['wrongnessValues', 'absoluteValues'];
+
   const options = {
     maintainAspectRatio: false,
-    tooltips: {
-      callbacks: {
-        enabled: () => false,
-      },
-    },
     scales: {
       yAxes: [
         {
@@ -33,6 +36,27 @@ const Chart = ({ chartName }) => {
         },
       ],
     },
+    plugins: {
+      tooltips: {
+        yAlign: 'center',
+      },
+    },
+    tooltips: {
+      position: 'custom',
+      callbacks: {
+        title: (context) => {
+          return context[0].datasetIndex ? chartMetadata.colorLabel : chartMetadata.wrongnessLabel;
+        },
+        afterTitle: (context) => {
+          return context[0].label;
+        },
+        label: (context) => {
+          const datasetname = tooltipDatasetNames[context.datasetIndex];
+          const value = chartData[datasetname][context.index];
+          return `${value} ${chartMetadata.units}`;
+        },
+      },
+    },
   };
 
   const data = {
@@ -48,36 +72,25 @@ const Chart = ({ chartName }) => {
     ],
     datasets: [
       {
-        label: 'Wrongness °F',
-        minBarLength: '1',
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        backgroundColor: '#888',
-        data: chartData.values,
+        label: chartMetadata.wrongnessLabel,
+        hoverBackgroundColor: 'rgba(255,255,255,0.5)',
+        backgroundColor: 'rgba(255,255,255,0.5)',
+        borderWidth: 2,
+        borderColor: '#fff',
+        data: chartData.wrongnessValues,
       },
       {
-        label: 'Absolute Temperature °F',
+        label: chartMetadata.colorLabel,
         barPercentage: 1.25,
-        borderWidth: 1,
+        borderWidth: 0,
+        hoverBackgroundColor: chartData.colors,
         backgroundColor: chartData.colors,
-        data: [
-          [-10, 10],
-          [-10, 10],
-          [-10, 10],
-          [-10, 10],
-          [-10, 10],
-          [-10, 10],
-          [-10, 10],
-          [-10, 10],
-        ],
+        data: Array(8).fill([chartMetadata.min, chartMetadata.max]),
       },
     ],
   };
-  return (
-    <div className={styles.Chart}>
-     {chartData.values &&  <Bar data={data} width={100} options={options} />}
-    </div>
-  );
+
+  return <div className={styles.Chart}>{chartData.wrongnessValues && <Bar data={data} options={options} />}</div>;
 };
 
 export default Chart;

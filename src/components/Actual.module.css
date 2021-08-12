@@ -1,0 +1,12 @@
+.Actual {
+  padding: 10px;
+  text-align: center;
+}
+
+.color {
+  background-color: #888;
+  position: absolute;
+  top: 30px;
+  width: 66%;
+  bottom: 30px;
+}

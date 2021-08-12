@@ -32,9 +32,9 @@ const parseCsvData = (csvData) => {
       time: new Date(row[`date${dayNumber}`]),
       condition: row[`condition${dayNumber}`],
       precipitation: row[`precipitation${dayNumber}`],
-      temperature: row[`temperature${dayNumber}`],
+      temperature: parseFloat(row[`temperature${dayNumber}`]),
       windBearing: row[`windBearing${dayNumber}`],
-      windSpeed: row[`windSpeed${dayNumber}`],
+      windSpeed: parseFloat(row[`windSpeed${dayNumber}`]),
     };
   };
 
@@ -46,9 +46,9 @@ const parseCsvData = (csvData) => {
       time: new Date(row.date),
       condition: row.condition,
       precipitation: row.precipitation,
-      temperature: row.temperature,
+      temperature: parseFloat(row.temperature),
       windBearing: row.windBearing,
-      windSpeed: row.windSpeed,
+      windSpeed: parseFloat(row.windSpeed),
       forecasts: [
         getForecast(0, dateKey),
         getForecast(1, dateKey),

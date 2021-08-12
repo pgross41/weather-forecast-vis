@@ -4,12 +4,11 @@ import { Divider, Grid, Header, Segment } from 'semantic-ui-react';
 import styles from './ChartPanel.module.css';
 import Legend from './Legend';
 import Chart from './Chart';
-import selectWeatherData from '../redux/selectors/selectWeatherData';
 import selectChartMetadata from '../redux/selectors/selectChartMetadata';
+import Actual from './Actual';
 
 const ChartPanel = ({ chartName }) => {
   const chartMetadata = useSelector(selectChartMetadata(chartName));
-  const weatherData = useSelector(selectWeatherData);
   return (
     <Segment className={styles.chartPanel} id={chartName}>
       <Header as="h3" content={chartName} textAlign="left" />
@@ -28,7 +27,7 @@ const ChartPanel = ({ chartName }) => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={2} textAlign="right">
-            {weatherData && weatherData[chartMetadata.weatherType]}
+            <Actual chartName={chartName} />
           </Grid.Column>
           <Grid.Column width={12} textAlign="right">
             <Chart chartName={chartName} />
