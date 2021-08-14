@@ -7,8 +7,8 @@ export default {
     { color: '#eeb479', label: '60°F', value: 60 },
     { color: '#e9e29c', label: '55°F', value: 55 },
     { color: '#9ccb86', label: '40°F', value: 40 },
-    { color: '#39b185', label: '25°F', value: 25 },
-    { color: '#009392', label: '10°F', value: 10 },
+    { color: '#339392', label: '25°F', value: 25 },
+    { color: '#006aa3', label: '10°F', value: 10 },
   ],
 
   min: -15,

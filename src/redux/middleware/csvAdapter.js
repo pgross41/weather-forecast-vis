@@ -4,7 +4,7 @@ import csvUrl from '../../weatherdata.csv';
 
 /**
  * Read weather data from CSV and transform it into something useful
- * Would like to swap this file out with an API call in the future
+ * Would like to swap this file out with an API call in the future?
  */
 export default (store) => (next) => async (action) => {
   if (action.type === LOAD_WEATHER_DATA) {
@@ -50,14 +50,14 @@ const parseCsvData = (csvData) => {
       windBearing: row.windBearing,
       windSpeed: parseFloat(row.windSpeed),
       forecasts: [
-        getForecast(0, dateKey),
-        getForecast(1, dateKey),
-        getForecast(2, dateKey),
-        getForecast(3, dateKey),
-        getForecast(4, dateKey),
-        getForecast(5, dateKey),
-        getForecast(6, dateKey),
         getForecast(7, dateKey),
+        getForecast(6, dateKey),
+        getForecast(5, dateKey),
+        getForecast(4, dateKey),
+        getForecast(3, dateKey),
+        getForecast(2, dateKey),
+        getForecast(1, dateKey),
+        getForecast(0, dateKey),
       ],
     };
   });

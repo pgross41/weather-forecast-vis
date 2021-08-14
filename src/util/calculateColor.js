@@ -1,31 +1,31 @@
+/**
+ * Calculate the color "between" the colors on the legend
+ * Return array is the same size as the values array input
+ */
 export default (legendValues, values) => {
-  if (!legendValues || !values) return [];
+  if (!legendValues || !legendValues.length || !values || !values.length) return [];
 
   return values.map((value) => {
-    const legendIndex = legendValues.findIndex((_, index) => {
-      const belowThis = value < legendValues[index].value;
-      const aboveNext = !legendValues[index + 1] || value > legendValues[index + 1].value;
-      return belowThis && aboveNext;
-    });
-    if (legendIndex < 0) return '';
-    const legend1 = legendValues[legendIndex];
-    const legend2 = legendValues[legendIndex + 1] || legend1;
-    const color1 = legend1.color.replace('#', '');
-    const color2 = legend2.color.replace('#', '');
-    const ratio = (legend1.value - value) / (legend2.value - legend1.value);
+    const legendIndex = legendValues.findIndex((legendItem) => value > legendItem.value);
+    if (legendIndex < 0) return legendValues[legendValues.length - 1].color;
 
-    const r = Math.ceil(
-      parseInt(color1.substring(0, 2), 16) * ratio + parseInt(color2.substring(0, 2), 16) * (1 - ratio)
-    );
-    const g = Math.ceil(
-      parseInt(color1.substring(2, 4), 16) * ratio + parseInt(color2.substring(2, 4), 16) * (1 - ratio)
-    );
-    const b = Math.ceil(
-      parseInt(color1.substring(4, 6), 16) * ratio + parseInt(color2.substring(4, 6), 16) * (1 - ratio)
-    );
+    const lowerLegend = legendValues[legendIndex];
+    const upperLegend = legendValues[legendIndex - 1] || lowerLegend;
+    const lowerColor = lowerLegend.color.replace('#', '');
+    const upperColor = upperLegend.color.replace('#', '');
+    const ratio = (value - lowerLegend.value) / (upperLegend.value - lowerLegend.value + 0.00001);
 
-    const valid = (x) => Math.min(255, Math.max(0, x));
+    const getR = (color) => parseInt(color.substring(0, 2), 16);
+    const getG = (color) => parseInt(color.substring(2, 4), 16);
+    const getB = (color) => parseInt(color.substring(4, 6), 16);
 
-    return `rgb(${valid(r)},${valid(g)},${valid(b)})`;
+    const valid = (x) => Math.min(255, Math.max(0, Math.floor(x)));
+    const calculate = (getX) => valid(getX(lowerColor) + (getX(upperColor) - getX(lowerColor)) * ratio);
+
+    const r = calculate(getR);
+    const g = calculate(getG);
+    const b = calculate(getB);
+
+    return `rgb(${r},${g},${b})`;
   });
 };

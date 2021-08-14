@@ -16,24 +16,24 @@ const ChartPanel = ({ chartName }) => {
       <Grid>
         <Grid.Row>
           <Grid.Column width={2}>
-            <Header as="h4" content={'Actual'} />
+            <Header as="h4" content={'Legend'} />
           </Grid.Column>
           <Grid.Column width={12}>
             <Header as="h4" content={'Forecast'} />
           </Grid.Column>
           <Grid.Column width={2}>
-            <Header as="h4" content={'Legend'} />
+            <Header as="h4" content={'Actual'} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={2} textAlign="right">
-            <Actual chartName={chartName} />
+            <Legend values={chartMetadata.legendValues} />
           </Grid.Column>
           <Grid.Column width={12} textAlign="right">
             <Chart chartName={chartName} />
           </Grid.Column>
           <Grid.Column width={2} textAlign="right">
-            <Legend values={chartMetadata.legendValues} />
+            <Actual chartName={chartName} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

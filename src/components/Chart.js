@@ -61,14 +61,14 @@ const Chart = ({ chartName }) => {
 
   const data = {
     labels: [
-      'Day of',
-      '1 day prior',
-      '2 days prior',
-      '3 days prior',
-      '4 days prior',
-      '5 days prior',
-      '6 days prior',
       '7 days prior',
+      '6 days prior',
+      '5 days prior',
+      '4 days prior',
+      '3 days prior',
+      '2 days prior',
+      '1 day prior',
+      'Day of',
     ],
     datasets: [
       {
